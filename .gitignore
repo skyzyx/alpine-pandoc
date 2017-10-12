@@ -1,0 +1,6 @@
+*.rst
+.DS_Store
+.venv/
+docs/_build/
+docs/uml/*.svg
+plantuml.jar

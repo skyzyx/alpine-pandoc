@@ -25,6 +25,8 @@ The short version is `FROM skyzyx/alpine-pandoc:1.0.0`.
 
 `docker-compose up` the first time (or with `--build`) will build your custom container, then run your `ENTRYPOINT` task. Subsequent runs of `docker-compose up` will only execute your `ENTRYPOINT` task.
 
+### Sample `Dockerfile`
+
 ```Dockerfile
 FROM skyzyx/alpine-pandoc:1.0.0
 
@@ -43,6 +45,8 @@ RUN apk add --no-cache --virtual .persistent-deps $PERSISTENT_DEPS && \
 
 ENTRYPOINT ["make", "docs"]
 ```
+
+### Sample `docker-compose.yml`
 
 ```yaml
 version: "3"

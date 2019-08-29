@@ -35,15 +35,14 @@ ENV PANDOC_ROOT /usr/local/pandoc
 
 ENV PATH $PATH:$PANDOC_ROOT/bin
 
-# Create Pandoc build space
-RUN mkdir -p /pandoc-build
-WORKDIR /pandoc-build
-
 # Install/Build Packages
 RUN apk upgrade --update && \
     apk add --virtual .build-deps $BUILD_DEPS && \
     apk add --virtual .persistent-deps $PERSISTENT_DEPS && \
     curl -fsSL "$PLANTUML_DOWNLOAD_URL" -o /usr/local/plantuml.jar && \
+    mkdir -p /pandoc-build \
+             /var/docs && \
+    cd /pandoc-build && \
     curl -fsSL "$PANDOC_DOWNLOAD_URL" | tar -xzf - && \
     cd pandoc-$PANDOC_VERSION && \
     cabal update && \
@@ -58,7 +57,6 @@ RUN apk upgrade --update && \
     set -x && \
     addgroup -g 82 -S www-data && \
     adduser -u 82 -D -S -G www-data www-data && \
-    mkdir -p /var/docs && \
     apk del .build-deps
 
 # Set to non root user

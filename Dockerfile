@@ -52,6 +52,7 @@ RUN apk upgrade --update && \
     cabal copy && \
     cd / && \
     rm -Rf /pandoc-build \
+           $PANDOC_ROOT/lib \
            /root/.cabal \
            /root/.ghc && \
     set -x && \

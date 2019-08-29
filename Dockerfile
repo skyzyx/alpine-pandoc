@@ -41,8 +41,8 @@ WORKDIR /pandoc-build
 
 # Install/Build Packages
 RUN apk upgrade --update && \
-    apk add --no-cache --virtual .build-deps $BUILD_DEPS && \
-    apk add --no-cache --virtual .persistent-deps $PERSISTENT_DEPS && \
+    apk add --virtual .build-deps $BUILD_DEPS && \
+    apk add --virtual .persistent-deps $PERSISTENT_DEPS && \
     curl -fsSL "$PLANTUML_DOWNLOAD_URL" -o /usr/local/plantuml.jar && \
     curl -fsSL "$PANDOC_DOWNLOAD_URL" | tar -xzf - && \
         ( cd pandoc-$PANDOC_VERSION && cabal update && cabal install --only-dependencies && \

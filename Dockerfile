@@ -55,8 +55,8 @@ RUN apk upgrade --update && \
     rm -Rf /pandoc-build \
            /root/.cabal \
            /root/.ghc && \
-    set -x; \
-    addgroup -g 82 -S www-data; \
+    set -x && \
+    addgroup -g 82 -S www-data && \
     adduser -u 82 -D -S -G www-data www-data && \
     mkdir -p /var/docs && \
     apk del .build-deps

@@ -21,7 +21,7 @@ ENV BUILD_DEPS \
 ENV PERSISTENT_DEPS \
     gmp \
     graphviz \
-    openjdk11 \
+    openjdk11-jre \
     python \
     py2-pip \
     sed \

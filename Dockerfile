@@ -28,7 +28,7 @@ ENV PERSISTENT_DEPS \
     ttf-droid-nonlatin
 ENV EDGE_DEPS cabal
 
-ENV PLANTUML_VERSION 1.2017.18
+ENV PLANTUML_VERSION 1.2019.8
 ENV PLANTUML_DOWNLOAD_URL https://sourceforge.net/projects/plantuml/files/plantuml.$PLANTUML_VERSION.jar/download
 
 ENV PANDOC_VERSION 2.7.3

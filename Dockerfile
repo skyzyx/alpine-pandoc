@@ -12,13 +12,13 @@ ENV BUILD_DEPS \
     alpine-sdk \
     coreutils \
     ghc \
-    gmp \
     libffi \
     linux-headers \
     musl-dev \
     wget \
     zlib-dev
 ENV PERSISTENT_DEPS \
+    gmp \
     graphviz \
     openjdk8 \
     python \
@@ -31,7 +31,7 @@ ENV EDGE_DEPS cabal
 ENV PLANTUML_VERSION 1.2017.18
 ENV PLANTUML_DOWNLOAD_URL https://sourceforge.net/projects/plantuml/files/plantuml.$PLANTUML_VERSION.jar/download
 
-ENV PANDOC_VERSION 1.19.2.4
+ENV PANDOC_VERSION 2.7.3
 ENV PANDOC_DOWNLOAD_URL https://hackage.haskell.org/package/pandoc-$PANDOC_VERSION/pandoc-$PANDOC_VERSION.tar.gz
 ENV PANDOC_ROOT /usr/local/pandoc
 

@@ -14,9 +14,7 @@ ENV BUILD_DEPS \
     coreutils \
     ghc \
     libffi \
-    linux-headers \
     musl-dev \
-    wget \
     zlib-dev
 ENV PERSISTENT_DEPS \
     gmp \

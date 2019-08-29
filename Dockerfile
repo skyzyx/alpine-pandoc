@@ -45,11 +45,13 @@ RUN apk upgrade --update && \
     apk add --virtual .persistent-deps $PERSISTENT_DEPS && \
     curl -fsSL "$PLANTUML_DOWNLOAD_URL" -o /usr/local/plantuml.jar && \
     curl -fsSL "$PANDOC_DOWNLOAD_URL" | tar -xzf - && \
-        ( cd pandoc-$PANDOC_VERSION && cabal update && cabal install --only-dependencies && \
-        cabal configure --prefix=$PANDOC_ROOT && \
-        cabal build && \
-        cabal copy && \
-        cd .. ) && \
+    cd pandoc-$PANDOC_VERSION && \
+    cabal update && \
+    cabal install --only-dependencies && \
+    cabal configure --prefix=$PANDOC_ROOT && \
+    cabal build && \
+    cabal copy && \
+    cd .. && \
     rm -Rf pandoc-$PANDOC_VERSION/ && \
     rm -Rf /root/.cabal/ /root/.ghc/ && \
     rmdir /pandoc-build && \

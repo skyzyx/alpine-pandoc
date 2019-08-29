@@ -55,12 +55,12 @@ RUN apk upgrade --update && \
            /root/.cabal \
            /root/.ghc && \
     set -x && \
-    addgroup -g 82 -S www-data && \
-    adduser -u 82 -D -S -G www-data www-data && \
+    addgroup -g 82 -S pandoc && \
+    adduser -u 82 -D -S -G pandoc pandoc && \
     apk del .build-deps
 
 # Set to non root user
-USER www-data
+USER pandoc
 
 # Reset the work dir
 WORKDIR /var/docs

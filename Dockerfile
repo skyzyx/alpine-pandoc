@@ -60,6 +60,8 @@ RUN apk upgrade --update && \
     adduser -u 82 -D -S -G pandoc pandoc && \
     apk del .build-deps
 
+COPY plantuml /usr/local/bin/
+
 # Set to non root user
 USER pandoc
 

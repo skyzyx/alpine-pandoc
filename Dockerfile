@@ -51,10 +51,10 @@ RUN apk upgrade --update && \
     cabal configure --prefix=$PANDOC_ROOT && \
     cabal build && \
     cabal copy && \
-    cd .. && \
-    rm -Rf pandoc-$PANDOC_VERSION/ && \
-    rm -Rf /root/.cabal/ /root/.ghc/ && \
-    rmdir /pandoc-build && \
+    cd / && \
+    rm -Rf /pandoc-build \
+           /root/.cabal \
+           /root/.ghc && \
     set -x; \
     addgroup -g 82 -S www-data; \
     adduser -u 82 -D -S -G www-data www-data && \

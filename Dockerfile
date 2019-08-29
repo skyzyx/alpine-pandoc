@@ -6,10 +6,11 @@
 # * PlantUML (Java) to convert UML diagrams to SVG images.
 #
 
-FROM alpine:3.6
+FROM alpine:3.10
 
 ENV BUILD_DEPS \
     alpine-sdk \
+    cabal \
     coreutils \
     ghc \
     libffi \
@@ -26,7 +27,6 @@ ENV PERSISTENT_DEPS \
     sed \
     ttf-droid \
     ttf-droid-nonlatin
-ENV EDGE_DEPS cabal
 
 ENV PLANTUML_VERSION 1.2019.8
 ENV PLANTUML_DOWNLOAD_URL https://sourceforge.net/projects/plantuml/files/plantuml.$PLANTUML_VERSION.jar/download
@@ -46,7 +46,6 @@ RUN apk upgrade --update && \
     apk add --no-cache --virtual .build-deps $BUILD_DEPS && \
     apk add --no-cache --virtual .persistent-deps $PERSISTENT_DEPS && \
     curl -fsSL "$PLANTUML_DOWNLOAD_URL" -o /usr/local/plantuml.jar && \
-    apk add --no-cache --virtual .edge-deps $EDGE_DEPS -X http://dl-cdn.alpinelinux.org/alpine/edge/community && \
     curl -fsSL "$PANDOC_DOWNLOAD_URL" | tar -xzf - && \
         ( cd pandoc-$PANDOC_VERSION && cabal update && cabal install --only-dependencies && \
         cabal configure --prefix=$PANDOC_ROOT && \
@@ -60,7 +59,7 @@ RUN apk upgrade --update && \
     addgroup -g 82 -S www-data; \
     adduser -u 82 -D -S -G www-data www-data && \
     mkdir -p /var/docs && \
-    apk del .build-deps .edge-deps
+    apk del .build-deps
 
 # Set to non root user
 USER www-data

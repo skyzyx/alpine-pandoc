@@ -1,5 +1,7 @@
 # alpine-pandoc
 
+![MicroBadger Size (tag)](https://img.shields.io/microbadger/image-size/skyzyx/alpine-pandoc/1.1.0?style=for-the-badge) ![MicroBadger Layers (tag)](https://img.shields.io/microbadger/layers/skyzyx/alpine-pandoc/1.1.0?style=for-the-badge) ![Docker Pulls](https://img.shields.io/docker/pulls/skyzyx/alpine-pandoc?style=for-the-badge) ![Docker Stars](https://img.shields.io/docker/stars/skyzyx/alpine-pandoc?style=for-the-badge)
+
 This is the source code which builds a Docker container comprised of Alpine Linux, [Pandoc], [PlantUML], and [Sphinx]. It is intended to provide an environment which is optimized for generating documentation.
 
 We use:
@@ -16,7 +18,7 @@ make
 
 ## Consuming the Container
 
-The short version is `FROM skyzyx/alpine-pandoc:1.0.0`.
+The short version is `FROM skyzyx/alpine-pandoc:1.1.0`.
 
 1. Compiling Pandoc takes some time, so using this container saves you that time.
 1. Build your own container with your own specific dependencies using `RUN` commands.
@@ -28,7 +30,7 @@ The short version is `FROM skyzyx/alpine-pandoc:1.0.0`.
 ### Sample `Dockerfile`
 
 ```Dockerfile
-FROM skyzyx/alpine-pandoc:1.0.0
+FROM skyzyx/alpine-pandoc:1.1.0
 
 ENV PERSISTENT_DEPS wget git mercurial make gmp openssh
 ENV SPHINXBUILD /usr/bin/sphinx-build
@@ -40,8 +42,8 @@ WORKDIR /var/docs
 
 USER root
 
-RUN apk add --no-cache --virtual .persistent-deps $PERSISTENT_DEPS && \
-    pip install -r requirements.txt
+RUN apk add --no-cache --virtual .persistent-deps $PERSISTENT_DEPS
+RUN pip install -r requirements.txt
 
 ENTRYPOINT ["make", "docs"]
 ```

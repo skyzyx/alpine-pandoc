@@ -10,8 +10,8 @@ It is intended to provide an environment which is optimized for generating docum
 
 We use:
 
-* [Pandoc] (Haskell) to convert all [Markdown] into either generated HTML or [reStructuredText] files.
-* [PlantUML] (Java) to convert UML diagrams to SVG images.
+* [Pandoc] (Haskell) to convert [Markdown] into HTML, [reStructuredText] or PDF.
+* [PlantUML] (Java) to convert UML diagrams to SVG or PNG images.
 
 ## Building the Container
 

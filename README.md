@@ -1,7 +1,7 @@
 # alpine-pandoc
 
-![MicroBadger Size (tag)](https://img.shields.io/microbadger/image-size/skyzyx/alpine-pandoc/1.1.0?style=for-the-badge)
-![MicroBadger Layers (tag)](https://img.shields.io/microbadger/layers/skyzyx/alpine-pandoc/1.1.0?style=for-the-badge)
+![MicroBadger Size (tag)](https://img.shields.io/microbadger/image-size/skyzyx/alpine-pandoc/1.2.0?style=for-the-badge)
+![MicroBadger Layers (tag)](https://img.shields.io/microbadger/layers/skyzyx/alpine-pandoc/1.2.0?style=for-the-badge)
 ![Docker Pulls](https://img.shields.io/docker/pulls/skyzyx/alpine-pandoc?style=for-the-badge)
 ![Docker Stars](https://img.shields.io/docker/stars/skyzyx/alpine-pandoc?style=for-the-badge)
 
@@ -21,7 +21,7 @@ make
 
 ## Consuming the Container
 
-The short version is `FROM skyzyx/alpine-pandoc:1.1.0`.
+The short version is `FROM skyzyx/alpine-pandoc:1.2.0`.
 
 1. Compiling Pandoc takes some time, so using this container saves you that time.
 1. Build your own container with your own specific dependencies using `RUN` commands.
@@ -34,7 +34,7 @@ Subsequent runs of `docker-compose up` will only execute your `ENTRYPOINT` task.
 ### Sample `Dockerfile`
 
 ```Dockerfile
-FROM skyzyx/alpine-pandoc:1.1.0
+FROM skyzyx/alpine-pandoc:1.2.0
 
 ENV PERSISTENT_DEPS wget git mercurial make gmp openssh sphinx
 ENV SPHINXBUILD /usr/bin/sphinx-build

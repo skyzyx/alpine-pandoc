@@ -82,9 +82,7 @@ ENTRYPOINT ["make", "docs"]
 version: "3"
 services:
     documentation-builder:
-        build:
-            context: .
-            dockerfile: Dockerfile
+        build: .
         volumes:
             - ./src:/var/docs
 ```

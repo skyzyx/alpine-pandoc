@@ -1,6 +1,9 @@
 # alpine-pandoc
 
-![MicroBadger Size (tag)](https://img.shields.io/microbadger/image-size/skyzyx/alpine-pandoc/1.1.0?style=for-the-badge) ![MicroBadger Layers (tag)](https://img.shields.io/microbadger/layers/skyzyx/alpine-pandoc/1.1.0?style=for-the-badge) ![Docker Pulls](https://img.shields.io/docker/pulls/skyzyx/alpine-pandoc?style=for-the-badge) ![Docker Stars](https://img.shields.io/docker/stars/skyzyx/alpine-pandoc?style=for-the-badge)
+![MicroBadger Size (tag)](https://img.shields.io/microbadger/image-size/skyzyx/alpine-pandoc/1.1.0?style=for-the-badge)
+![MicroBadger Layers (tag)](https://img.shields.io/microbadger/layers/skyzyx/alpine-pandoc/1.1.0?style=for-the-badge)
+![Docker Pulls](https://img.shields.io/docker/pulls/skyzyx/alpine-pandoc?style=for-the-badge)
+![Docker Stars](https://img.shields.io/docker/stars/skyzyx/alpine-pandoc?style=for-the-badge)
 
 This is the source code which builds a Docker container comprised of Alpine Linux, [Pandoc], and [PlantUML].
 It is intended to provide an environment which is optimized for generating documentation.
@@ -25,7 +28,8 @@ The short version is `FROM skyzyx/alpine-pandoc:1.1.0`.
 1. Use something like [Docker Compose] to mount your documentation source to `/var/docs`.
 1. Add your documentation-building task as an `ENTRYPOINT`.
 
-`docker-compose up` the first time (or with `--build`) will build your custom container, then run your `ENTRYPOINT` task. Subsequent runs of `docker-compose up` will only execute your `ENTRYPOINT` task.
+`docker-compose up` the first time (or with `--build`) will build your custom container, then run your `ENTRYPOINT` task.
+Subsequent runs of `docker-compose up` will only execute your `ENTRYPOINT` task.
 
 ### Sample `Dockerfile`
 
@@ -61,8 +65,8 @@ services:
             - ./src:/var/docs
 ```
 
-  [Docker Compose]: https://docs.docker.com/compose/
-  [Markdown]: http://commonmark.org
-  [Pandoc]: http://pandoc.org
-  [PlantUML]: http://plantuml.com
-  [reStructuredText]: http://docutils.sourceforge.net/rst.html
+[Docker Compose]: https://docs.docker.com/compose/
+[Markdown]: http://commonmark.org
+[Pandoc]: http://pandoc.org
+[PlantUML]: http://plantuml.com
+[reStructuredText]: http://docutils.sourceforge.net/rst.html

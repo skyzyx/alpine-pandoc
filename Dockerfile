@@ -40,6 +40,7 @@ RUN apk upgrade --update && \
     apk add --virtual .build-deps $BUILD_DEPS && \
     apk add --virtual .persistent-deps $PERSISTENT_DEPS && \
     curl -fsSL "$PLANTUML_DOWNLOAD_URL" -o /usr/local/plantuml.jar && \
+    chmod a+r /usr/local/plantuml.jar && \
     mkdir -p /pandoc-build \
              /var/docs && \
     cd /pandoc-build && \
@@ -55,12 +56,14 @@ RUN apk upgrade --update && \
            /root/.cabal \
            /root/.ghc && \
     set -x && \
-    addgroup -g 82 -S www-data && \
-    adduser -u 82 -D -S -G www-data www-data && \
+    addgroup -g 82 -S pandoc && \
+    adduser -u 82 -D -S -G pandoc pandoc && \
     apk del .build-deps
 
+COPY plantuml /usr/local/bin/
+
 # Set to non root user
-USER www-data
+USER pandoc
 
 # Reset the work dir
 WORKDIR /var/docs

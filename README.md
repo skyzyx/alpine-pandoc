@@ -33,6 +33,8 @@ Subsequent runs of `docker-compose up` will only execute your `ENTRYPOINT` task.
 
 ### Sample `Dockerfile`
 
+#### Using [Sphinx]
+
 ```Dockerfile
 FROM skyzyx/alpine-pandoc:1.2.0
 
@@ -52,6 +54,28 @@ RUN pip install -r requirements.txt
 ENTRYPOINT ["make", "docs"]
 ```
 
+#### Using [XeTeX] and [pandoc-plantuml-filter]
+
+```Dockerfile
+FROM skyzyx/alpine-pandoc:1.2.0
+
+USER root
+ENV DEPS \
+    make \
+    texlive-xetex
+RUN apk add --no-cache $DEPS && \
+    pip install pandoc-plantuml-filter
+
+USER pandoc
+ENTRYPOINT ["make", "docs"]
+
+# make ultimately calls:
+#  pandoc --filter=pandoc-plantuml
+#         --output=out.pdf
+#         --from=markdown
+#         *.md
+```
+
 ### Sample `docker-compose.yml`
 
 ```yaml
@@ -68,5 +92,8 @@ services:
 [Docker Compose]: https://docs.docker.com/compose/
 [Markdown]: http://commonmark.org
 [Pandoc]: http://pandoc.org
+[pandoc-plantuml-filter]: https://github.com/timofurrer/pandoc-plantuml-filter
 [PlantUML]: http://plantuml.com
 [reStructuredText]: http://docutils.sourceforge.net/rst.html
+[Sphinx]: http://www.sphinx-doc.org
+[XeTeX]: http://xetex.sourceforge.net/

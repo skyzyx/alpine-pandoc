@@ -2,7 +2,6 @@
 #
 # We use:
 # * Pandoc (Haskell) to convert all Markdown into either generated HTML or .rst files.
-# * Sphinx (Python) to convert .rst files into generated HTML.
 # * PlantUML (Java) to convert UML diagrams to SVG images.
 #
 
